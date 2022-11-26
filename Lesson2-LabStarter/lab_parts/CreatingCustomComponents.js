@@ -39,7 +39,7 @@ export default function CreatingCustomComponents() {
           <Button title="-" 
           onPress={() => {
             setMilk((prevMilk) => {
-              if(milk == 0){
+              if(prevMilk == 0){
                 return (milk);
               }else {
                 return (prevMilk - 1);
@@ -67,7 +67,7 @@ export default function CreatingCustomComponents() {
           <Button title="-" 
           onPress={() => {
             setBread((prevBread) => {
-              if(bread == 0){
+              if(prevBread == 0){
                 return (bread);
               }else {
                 return (prevBread - 1);
@@ -94,7 +94,7 @@ export default function CreatingCustomComponents() {
           <Button title="-" 
           onPress={() => {
             setEggs((prevEggs) => {
-              if(eggs == 0){
+              if(prevEggs == 0){
                 return (eggs);
               }else {
                 return (prevEggs - 1);

@@ -29,7 +29,7 @@ export default function UsingStateToTrackItemCount() {
           <Button title="-" 
           onPress={() => {
             setItem((prevItem) => {
-              if(item == 0){
+              if(prevItem == 0){
                 return (item);
               }else {
                 return (prevItem - 1);

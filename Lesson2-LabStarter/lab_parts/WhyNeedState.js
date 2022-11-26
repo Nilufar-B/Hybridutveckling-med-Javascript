@@ -32,8 +32,14 @@ const [age, setAge] = useState(10);
           title="Press me to update age to 20"
           onPress={() => {
            // age = 20;
-          setAge((prevAge) => prevAge + 10);
+          setAge((prevAge) => {
+          if(prevAge == 10){
+            return (prevAge + 10);
+          } else{
+            return (prevAge);
+          }
            console.log("age variable is now set to: " + age);
+           })
          }}
        // onPress = {() => setAge(age+10)}
         />
