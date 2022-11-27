@@ -6,19 +6,100 @@ import {
   Button,
   SafeAreaView,
   ScrollView,
+  TextComponent,
 } from "react-native";
 import { styles } from "../styles";
 
-/* TODO: DEFINE THE CART ITEM COMPONENT HERE */
+   const CartItemMilk = ({product, counterMilk, setCounterMilk}) => {
 
-/* Set labPart variable to 5, to view this part of the lab */
+   return(
+    
+    <View style = {{backgroundColor:'yellow', 
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center', 
+    marginTop: 10,}}>
+      <Text>{product}</Text>
+     
+      <Button title="-" onPress = {() => {
+        setCounterMilk((prevCounterMilk) =>{
+          if(prevCounterMilk == 0){
+            return counterMilk;
+          } else{
+            return (prevCounterMilk -1);
+          }
+        } )
+      }}/>
+  <Text>{counterMilk}</Text>
+      <Button title="+" onPress ={() => {
+        setCounterMilk((prevCounterMilk) => prevCounterMilk +1)
+      }}/>
+    </View>
+ 
+  );
+} ;  
+
+const CartItemBread = ({product, counterBread, setCounterBread}) =>{
+  return(
+    <View style = {{backgroundColor:'yellow', 
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center', 
+    marginTop: 10,}}>
+
+<Text>{product}</Text>
+     
+     <Button title="-" onPress = {() => {
+       setCounterBread((prevCounterBread) =>{
+         if(prevCounterBread == 0){
+           return counterBread;
+         } else{
+           return (prevCounterBread -1);
+         }
+       } )
+     }}/>
+ <Text>{counterBread}</Text>
+     <Button title="+" onPress ={() => {
+       setCounterBread((prevCounterBread) => prevCounterBread +1)
+     }}/>
+
+    </View>
+
+  );
+};
+
+const CartItemEggs = ({product, counterEggs, setCounterEggs}) =>{
+  return(
+    <View style = {{backgroundColor:'yellow', 
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center', 
+    marginTop: 10,}}>
+
+      <Text>{product}</Text>
+      <Button title="-" onPress = {() => {
+       setCounterEggs((prevCounterEggs) =>{
+         if(prevCounterEggs == 0){
+           return counterEggs;
+         } else{
+           return (prevCounterEggs -1);
+         }
+       } )
+     }}/>
+ <Text>{counterEggs}</Text>
+     <Button title="+" onPress ={() => {
+       setCounterEggs((prevCounterEggs) => prevCounterEggs +1)
+     }}/>
+
+    </View>
+
+  );
+};
 export default function CreatingCustomComponents() {
-  const[milk, setMilk] = useState(0);
-  const [bread, setBread] = useState(0);
-  const [eggs, setEggs] = useState(0);
+  const [counterMilk, setCounterMilk] = useState(0);
+  const [counterBread, setCounterBread] = useState(0);
+  const [counterEggs, setCounterEggs] = useState(0);
 
-  const total = 0;
-  
   return (
     <SafeAreaView style={styles.content}>
       <ScrollView>
@@ -28,94 +109,16 @@ export default function CreatingCustomComponents() {
           <Text style={{ fontWeight: "bold", marginBottom: 5 }}>
             Shopping Cart
           </Text>
-          <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor:"yellow"
-          }}
-        ><Text> Milk </Text>
-          <Button title="-" 
-          onPress={() => {
-            setMilk((prevMilk) => {
-              if(prevMilk == 0){
-                return (milk);
-              }else {
-                return (prevMilk - 1);
-              }
-            })
-          }}
-          />
-          <Text style={{ ...styles.bodyText }}>  {milk} </Text>
-          <Button title="+"
-          onPress={() => {
-          setMilk((prevMilk) => prevMilk +1);
-        }}
-          />
+        {/* TODO: ADD THE CART ITEMS BELOW*/}
+          <CartItemMilk product='Milk'  counterMilk={counterMilk} setCounterMilk ={setCounterMilk}/>
+          <CartItemBread product='Bread' counterBread={counterBread} setCounterBread = {setCounterBread}/>
+          <CartItemEggs product='Eggs' counterEggs={counterEggs} setCounterEggs = {setCounterEggs}/>
+       
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "yellow",
-            marginTop: 10
-          }}
-        >
-          <Text> Bread </Text>
-          <Button title="-" 
-          onPress={() => {
-            setBread((prevBread) => {
-              if(prevBread == 0){
-                return (bread);
-              }else {
-                return (prevBread - 1);
-              }
-            })
-          }}
-          />
-          <Text style={{ ...styles.bodyText }}>  {bread} </Text>
-          <Button title="+"
-          onPress={() => {
-          setBread((prevBread) => prevBread +1);
-        }}
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "yellow", marginTop:10
-          }}
-        >
-          <Text> Eggs </Text>
-          <Button title="-" 
-          onPress={() => {
-            setEggs((prevEggs) => {
-              if(prevEggs == 0){
-                return (eggs);
-              }else {
-                return (prevEggs - 1);
-              }
-            })
-          }}
-          />
-          <Text style={{ ...styles.bodyText }}>  {eggs} </Text>
-          <Button title="+"
-          onPress={() => {
-          setEggs((prevEggs) => prevEggs +1);
-        }}
-          />
-        </View>
-        </View>
-        <Text>You have ({milk})Milk, ({bread})Bread, ({eggs})Eggs in your cart</Text>
-        <Text>Total items in your cart : {milk + bread + eggs}.</Text>
-      
-          
+
+        <Text>You have ({counterMilk})Milk, ({counterBread})Bread, ({counterEggs})Eggs in your cart.</Text>
+        <Text>Total items in your cart: {counterMilk + counterBread + counterEggs}</Text>
         
-     
         <View style={styles.section}>
           <Text style={styles.bodyText}>
             <Text style={{ fontWeight: "bold" }}>Your Task: </Text>

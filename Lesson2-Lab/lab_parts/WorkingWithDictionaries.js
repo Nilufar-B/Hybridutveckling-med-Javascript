@@ -11,9 +11,9 @@ import { styles } from "../styles";
 
 /* Set labPart variable to 4, to view this part of the lab */
 export default function WorkingWithDictionaries() {
-
-  const [item, setItem] = useState({onions: 5, garlic: 3, bread: 1});
-
+  const [item, setItem] = useState({oninons: 5, garlic: 3, bread:1});
+ 
+  
   return (
     <SafeAreaView style={styles.content}>
       <ScrollView>
@@ -23,14 +23,15 @@ export default function WorkingWithDictionaries() {
           <Text style={{ fontWeight: "bold", marginBottom: 5 }}>
             Shopping Cart
           </Text>
-        
-          <Text style={{ ...styles.bodyText }}>Onions: {item.onions}</Text>
+
+          <Text style={{ ...styles.bodyText }}>Onions: {item.oninons}</Text>
           <Text style={{ ...styles.bodyText }}>Garlic: {item.garlic}</Text>
           <Text style={{ ...styles.bodyText }}>Bread: {item.bread}</Text>
-          <Button title="Update bread count to 2"
+          <Button title="Update bread count to 2" 
           onPress={()=> {
-            setItem({...item, bread:2})
-          }} />
+          setBread({...item, bread: 2});
+        }}
+          /> 
         </View>
         <View style={styles.section}>
           <Text style={styles.bodyText}>

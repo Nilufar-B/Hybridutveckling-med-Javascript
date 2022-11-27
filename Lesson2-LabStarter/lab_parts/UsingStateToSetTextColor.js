@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,9 +10,7 @@ import { styles } from "../styles";
 
 /* Set labPart variable to 2, to view this part of the lab */
 export default function UsingStateToSetTextColor() {
- // let textColor = "black";
- const [textColor, setTextColor] = useState('black');
- 
+  let textColor = "black";
   return (
     <SafeAreaView style={styles.content}>
       <Text style={styles.headerText}>Using State to Set Text Color</Text>
@@ -22,21 +19,9 @@ export default function UsingStateToSetTextColor() {
         <Text style={{ ...styles.bodyText, color: textColor }}>
           I am a text with {textColor} color
         </Text>
-        <Button title="Set text color to blue" 
-        onPress = {() => {
-          setTextColor("blue");
-        }}
-        />
-        <Button title="Set text color to green"
-        onPress={() => {
-          setTextColor("green");
-        }}
-        />
-        <Button title="Set text color to red" 
-        onPress={() => {
-          setTextColor("red");
-        }}
-        />
+        <Button title="Set text color to blue" />
+        <Button title="Set text color to green" />
+        <Button title="Set text color to red" />
         <Text></Text>
       </View>
       <View style={styles.section}>

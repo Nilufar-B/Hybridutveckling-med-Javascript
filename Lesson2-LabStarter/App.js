@@ -18,7 +18,7 @@ import CreatingCustomComponents from "./lab_parts/CreatingCustomComponents";
 */
 
 export default function App() {
-  let labPart = 4; /* SET THE VALUE OF THIS VARIABLE BASED ON WHICH PART OF THE LAB IS BEING DONE */
+  let labPart = 5; /* SET THE VALUE OF THIS VARIABLE BASED ON WHICH PART OF THE LAB IS BEING DONE */
 
   switch (labPart) {
     case 0:

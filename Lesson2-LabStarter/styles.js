@@ -26,4 +26,5 @@ export const styles = StyleSheet.create({
   explanationText: {
     fontSize: 15,
   },
+ 
 });

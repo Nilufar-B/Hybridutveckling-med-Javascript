@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,8 +10,6 @@ import { styles } from "../styles";
 
 /* Set labPart variable to 3, to view this part of the lab */
 export default function UsingStateToTrackItemCount() {
-  const[item, setItem] = useState(0);
-  
   return (
     <SafeAreaView style={styles.content}>
       <Text style={styles.headerText}>Using State to Track Item Count</Text>
@@ -26,25 +23,11 @@ export default function UsingStateToTrackItemCount() {
             justifyContent: "center",
           }}
         >
-          <Button title="-" 
-          onPress={() => {
-            setItem((prevItem) => {
-              if(prevItem == 0){
-                return (item);
-              }else {
-                return (prevItem - 1);
-              }
-            })
-          }}
-          />
-          <Text style={{ ...styles.bodyText }}>  {item} </Text>
-          <Button title="+"
-          onPress={() => {
-          setItem((prevItem) => prevItem +1);
-        }}
-          />
+          <Button title="-" />
+          <Text style={{ ...styles.bodyText }}>X</Text>
+          <Button title="+" />
         </View>
-        <Text>You have {item} items in your cart</Text>
+        <Text>You have X items in your cart</Text>
       </View>
       <View style={styles.section}>
         <Text style={styles.bodyText}>
