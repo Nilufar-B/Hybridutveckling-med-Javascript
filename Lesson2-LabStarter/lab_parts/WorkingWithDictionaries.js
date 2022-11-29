@@ -29,8 +29,11 @@ export default function WorkingWithDictionaries() {
           <Text style={{ ...styles.bodyText }}>Bread: {item.bread}</Text>
           <Button title="Update bread count to 2"
           onPress={()=> {
-            setItem({...item, bread:2})
-          }} />
+            setItem((prevItem) => {
+              return {...prevItem, bread:2}
+            })
+          }}
+           />
         </View>
         <View style={styles.section}>
           <Text style={styles.bodyText}>
