@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,7 +11,8 @@ import { styles } from "../styles";
 
 /* Set labPart variable to 1, to view this part of the lab */
 export default function WhyNeedState() {
-  let age = 10;
+ // let age = 10;
+ const [age, setAge] = useState(10);
 
   return (
     <SafeAreaView style={styles.content}>
@@ -28,7 +30,8 @@ export default function WhyNeedState() {
         <Button
           title="Press me to update age to 20"
           onPress={() => {
-            age = 20;
+           // age = 20;
+           setAge(20);
             console.log("age variable is now set to: " + age);
           }}
         />
