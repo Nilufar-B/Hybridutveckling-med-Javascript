@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { styles } from "../styles";
 
-   const CartItemMilk = ({product, counterMilk, setCounterMilk}) => {
+   const CartItem = ({product, counter, itemCounter}) => {
 
    return(
     
@@ -19,86 +19,43 @@ import { styles } from "../styles";
     alignItems:'center',
     justifyContent:'center', 
     marginTop: 10,}}>
-      <Text>{product}</Text>
-     
-      <Button title="-" onPress = {() => {
-        setCounterMilk((prevCounterMilk) =>{
-          if(prevCounterMilk == 0){
-            return counterMilk;
-          } else{
-            return (prevCounterMilk -1);
+    
+    <Text>{product}</Text>
+      <Button title="-" onPress = {() => 
+        itemCounter((currCounter) =>{
+          let newCounter = {
+            ...currCounter, [product] : currCounter[product] -1};
+            return newCounter;
           }
-        } )
-      }}/>
-  <Text>{counterMilk}</Text>
-      <Button title="+" onPress ={() => {
-        setCounterMilk((prevCounterMilk) => prevCounterMilk +1)
-      }}/>
+          
+        //  if(prevCounter == 0){
+        //    return counter;
+        //  } else{
+         //   return (prevCounter -1);
+         // }
+       // } )
+   )}
+    />
+  <Text>{counter}</Text>
+      <Button title="+" onPress ={() => 
+        itemCounter((currCounter) =>{
+          let newCounter = {
+            ...currCounter, [product] : currCounter[product] +1};
+            return newCounter;
+          }
+   )}/>
     </View>
  
   );
 } ;  
 
-const CartItemBread = ({product, counterBread, setCounterBread}) =>{
-  return(
-    <View style = {{backgroundColor:'yellow', 
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center', 
-    marginTop: 10,}}>
-
-<Text>{product}</Text>
-     
-     <Button title="-" onPress = {() => {
-       setCounterBread((prevCounterBread) =>{
-         if(prevCounterBread == 0){
-           return counterBread;
-         } else{
-           return (prevCounterBread -1);
-         }
-       } )
-     }}/>
- <Text>{counterBread}</Text>
-     <Button title="+" onPress ={() => {
-       setCounterBread((prevCounterBread) => prevCounterBread +1)
-     }}/>
-
-    </View>
-
-  );
-};
-
-const CartItemEggs = ({product, counterEggs, setCounterEggs}) =>{
-  return(
-    <View style = {{backgroundColor:'yellow', 
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center', 
-    marginTop: 10,}}>
-
-      <Text>{product}</Text>
-      <Button title="-" onPress = {() => {
-       setCounterEggs((prevCounterEggs) =>{
-         if(prevCounterEggs == 0){
-           return counterEggs;
-         } else{
-           return (prevCounterEggs -1);
-         }
-       } )
-     }}/>
- <Text>{counterEggs}</Text>
-     <Button title="+" onPress ={() => {
-       setCounterEggs((prevCounterEggs) => prevCounterEggs +1)
-     }}/>
-
-    </View>
-
-  );
-};
+ 
 export default function CreatingCustomComponents() {
-  const [counterMilk, setCounterMilk] = useState(0);
-  const [counterBread, setCounterBread] = useState(0);
-  const [counterEggs, setCounterEggs] = useState(0);
+ 
+
+  const [counter, setCounter] = useState({
+    Milk:0, Eggs:0, Bread: 0
+  })
 
   return (
     <SafeAreaView style={styles.content}>
@@ -110,14 +67,14 @@ export default function CreatingCustomComponents() {
             Shopping Cart
           </Text>
         {/* TODO: ADD THE CART ITEMS BELOW*/}
-          <CartItemMilk product='Milk'  counterMilk={counterMilk} setCounterMilk ={setCounterMilk}/>
-          <CartItemBread product='Bread' counterBread={counterBread} setCounterBread = {setCounterBread}/>
-          <CartItemEggs product='Eggs' counterEggs={counterEggs} setCounterEggs = {setCounterEggs}/>
+          <CartItem product= 'Milk'  counter={counter.Milk} itemCounter={setCounter}/>
+          <CartItem product='Bread' counter={counter.Bread} itemCounter={setCounter}/>
+          <CartItem product='Eggs' counter={counter.Eggs} itemCounter={setCounter}/>
        
         </View>
 
-        <Text>You have ({counterMilk})Milk, ({counterBread})Bread, ({counterEggs})Eggs in your cart.</Text>
-        <Text>Total items in your cart: {counterMilk + counterBread + counterEggs}</Text>
+        <Text>You have ({counter.Milk})Milk, ({counter.Bread})Bread, ({counter.Eggs})Eggs in your cart.</Text>
+        <Text>Total items in your cart: {counter.Milk + counter.Bread + counter.Eggs}</Text>
         
         <View style={styles.section}>
           <Text style={styles.bodyText}>
